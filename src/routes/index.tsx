@@ -37,9 +37,9 @@ function App() {
 
   return (
     <main className="page-wrap px-4 pb-8 pt-14">
-      <section className="flex flex-col sm:flex-row gap-x-5 gap-y-3 px-6 py-10 sm:px-10 sm:py-14">
+      <section className="flex flex-col gap-x-5 gap-y-6 px-6 py-10 sm:px-10 sm:py-14 lg:flex-row">
         <article className="flex-1 min-w-0">
-          <h1 className="text-2xl font-bold text-black">Desserts</h1>
+          <h1 className="mt-0 mb-5 text-4xl font-bold text-black">Desserts</h1>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-x-5 gap-y-8">
             {productsList.map((product) => (
               <ProductCard
@@ -50,12 +50,12 @@ function App() {
             ))}
           </div>
         </article>
-        <aside className="w-full sm:w-full sm:max-w-[400px] sm:flex-shrink-0">
+        <div className="w-full lg:max-w-[400px] lg:shrink-0">
             <Cart
               selectedProducts={cartItems}
               onRemoveFromCart={handleRemoveFromCart}
             />
-        </aside>
+        </div>
       </section>
 
    

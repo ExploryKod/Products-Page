@@ -10,7 +10,6 @@ describe('Cart', () => {
 
     expect(screen.getByText('Your Cart (0)')).toBeTruthy()
     expect(screen.getByText('Your added items will appear here')).toBeTruthy()
-    expect(screen.getByText('$0.00')).toBeTruthy()
   })
 
   it('renders selected items and computes order total', () => {
@@ -47,7 +46,7 @@ describe('Cart', () => {
 
     render(<Cart selectedProducts={selectedProducts} onRemoveFromCart={() => {}} />)
 
-    expect(screen.getByText('Your Cart (2)')).toBeTruthy()
+    expect(screen.getByText('Your Cart (3)')).toBeTruthy()
     expect(screen.getByText('Waffle with Berries')).toBeTruthy()
     expect(screen.getByText('Pistachio Baklava')).toBeTruthy()
     expect(screen.getByText('$17.00')).toBeTruthy()

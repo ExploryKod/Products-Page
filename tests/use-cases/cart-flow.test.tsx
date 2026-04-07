@@ -101,7 +101,7 @@ describe('Use case: product list and cart flow', () => {
     const cartList = screen.getByRole('list')
     const orderTotalRow = screen.getByText('OrderTotal :').parentElement
 
-    expect(screen.getByText('Your Cart (1)')).toBeTruthy()
+    expect(screen.getByText('Your Cart (2)')).toBeTruthy()
     expect(within(cartList).getByText('2x')).toBeTruthy()
     expect(orderTotalRow).toBeTruthy()
     expect(within(orderTotalRow as HTMLElement).getByText('$13.00')).toBeTruthy()

@@ -44,8 +44,7 @@ html {
 }
 
 html,
-body,
-#app {
+body {
   min-height: 100%;
 }
 
@@ -75,7 +74,7 @@ code {
   border: 1px solid var(--line);
   background: color-mix(in oklab, var(--surface-strong) 94%, var(--line));
   border-radius: 7px;
-  padding: 2px 7px;
+  padding: 0.125rem 0.4375rem;
 }
 
 pre code {
