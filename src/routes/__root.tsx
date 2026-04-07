@@ -49,7 +49,12 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Frontend Mentor | Product list with cart',
+      },
+      {
+        name: 'description',
+        content:
+          'Browse desserts, add items to cart, adjust quantities, and review your order in this Frontend Mentor challenge app.',
       },
     ],
     links: [
@@ -78,22 +83,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         className="font-sans antialiased [overflow-wrap:anywhere] selection:bg-[var(--selection-bg)]"
         suppressHydrationWarning
       >
-   
         {children}
-    
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-            TanStackQueryDevtools,
-          ]}
-        />
-        <Scripts />
       </body>
     </html>
   )
