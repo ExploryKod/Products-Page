@@ -1,193 +1,102 @@
-Welcome to your new TanStack Start app! 
+# Frontend Mentor - Product list with cart solution
 
-# Getting Started
+This is a solution to the [Product list with cart challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d).
 
-To run this application:
+## Table of contents
+
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Getting started](#getting-started)
+  - [Available scripts](#available-scripts)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [AI collaboration](#ai-collaboration)
+- [Author](#author)
+
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- Add items to the cart and remove them
+- Increase/decrease the number of items in the cart
+- See an order confirmation modal when they click "Confirm Order"
+- Reset their selections when they click "Start New Order"
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+
+### Links
+
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- Tailwind CSS v4 + CSS custom properties
+- React 19
+- [TanStack Start](https://tanstack.com/start) (SSR-ready app setup)
+- [TanStack Router](https://tanstack.com/router) with file-based routing
+- [Vitest](https://vitest.dev/) + Testing Library for unit/use-case tests
+
+### Getting started
+
+From the `product-app` folder:
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-# Building For Production
+Open [http://localhost:3000](http://localhost:3000).
 
-To build this application for production:
+> If you use npm instead of pnpm, keep using npm consistently for install and scripts.
 
-```bash
-npm run build
-```
+### Available scripts
 
-## Testing
+- `pnpm dev` - Run local dev server on port 3000
+- `pnpm build` - Build production client/server bundles
+- `pnpm preview` - Preview production build
+- `pnpm test` - Run all tests
+- `pnpm test:use-cases` - Run only use-case integration tests
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+### What I learned
 
-```bash
-npm run test
-```
+- How to keep route-level data loading in TanStack (`loader` + `Route.useLoaderData`) and pass state down via props.
+- Why Grid with `auto-fill/minmax` is often simpler than complex flex-basis math for card galleries.
+- How to structure tests in layers:
+  - unit tests for isolated components
+  - use-case tests as living docs for feature flows
 
-## Styling
+### Continued development
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+- Implement cart quantity decrement controls in the UI.
+- Add order confirmation modal and "Start New Order" flow.
+- Extend use-case tests to cover error/fallback scenarios and modal behavior.
 
-### Removing Tailwind CSS
+### Notes
+- useCallBack React tool was used in Product Card : it is to anticipate an evolution
 
-If you prefer not to use Tailwind CSS:
+### AI collaboration
 
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Uninstall the packages: `npm install @tailwindcss/vite tailwindcss -D`
+AI was used to:
 
+- debug SSR/hydration minor issues
+- I ask AI to design and implement test structure (unit + use-case) under my guidance
 
+## Author
 
-## Routing
+- Frontend Mentor - [@ExploryKod](https://www.frontendmentor.io/profile/ExploryKod)
 
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
+## Evolution
 
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
-```
-
-Then anywhere in your JSX you can use it like so:
-
-```tsx
-<Link to="/about">About</Link>
-```
-
-This will create a link that will navigate to the `/about` route.
-
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
-```
-
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
-## Server Functions
-
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
-
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
-
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
-
-## API Routes
-
-You can create API routes by using the `server` property in your route definitions:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
-
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-# Demo files
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
+I want to make a real product page template :
+> Indeed for now we are not isolated from the framework or style.
+Clean architecture to isolate logic from tanStack could be good for reusage.
+Style using variable for any change could be good for style customization while keeping constrainst on structures / layout
