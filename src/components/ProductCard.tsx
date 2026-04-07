@@ -3,18 +3,23 @@ import { minWidth } from '../theme/screens'
 
 type ProductCardProps = {
   product: Product
+  onAddToCart: (product: Product) => void
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   }).format(product.price)
 
+  const handleAddToCart = () => {
+    onAddToCart(product)
+  }
+
   return (
-    <div className="flex max-w-[300px] flex-col gap-4">
+    <div className="flex h-full flex-col gap-4">
       <div className="relative">
-        <div className="max-w-[300px] overflow-hidden rounded-lg">
+        <div className="overflow-hidden rounded-lg">
           <picture className="block h-full w-full">
             <source media={minWidth('lg')} srcSet={product.image.desktop} />
             <source media={minWidth('md')} srcSet={product.image.tablet} />
@@ -29,6 +34,7 @@ export function ProductCard({ product }: ProductCardProps) {
           type="button"
           className="group cursor-pointer flex items-center justify-center gap-x-2 min-w-[200px] border-gray-400 hover:border-accent-red text-accent-red absolute bottom-0 left-1/2 z-10 -translate-x-1/2 translate-y-1/2 rounded-full border border-solid bg-white px-4 py-2 text-sm font-semibold transition-colors hover:bg-rose-50"
           aria-label={`Add ${product.name} to cart`}
+          onClick={handleAddToCart}
         >
           <img src="/assets/icons/icon-add-to-cart.svg" alt="" width={20} height={20} />
           <span className="text-sm font-semibold text-black group-hover:text-accent-red">Add to Cart</span>

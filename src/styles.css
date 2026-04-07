@@ -19,6 +19,10 @@
   --color-rose-400: hsl(7 20% 60%);
   --color-rose-500: hsl(12 20% 44%);
   --color-rose-900: hsl(14 65% 9%);
+
+  --order-btn-width: max(250px, 80%);
+  --cart-min-width: 300px;
+  --product-card-max-width: max(250px, 100%);
 }
 
 :root {
@@ -84,6 +88,6 @@ pre code {
 }
 
 .page-wrap {
-  width: min(1080px, calc(100% - 2rem));
+  width: min(1440px, calc(100% - 2rem));
   margin-inline: auto;
 }

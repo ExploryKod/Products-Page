@@ -15,6 +15,9 @@ const config = defineConfig({
     tanstackStart(),
     viteReact(),
   ],
+  test: {
+    environment: 'happy-dom',
+  },
 })
 
 export default config
